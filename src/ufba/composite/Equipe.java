@@ -1,18 +1,13 @@
 package ufba.composite;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
-public class Equipe {
-	String nome;
-	Collection<Pessoa> pessoas = new ArrayList<Pessoa>();
-	Collection<Equipe> subequipes = new ArrayList<Equipe>();
+public class Equipe extends Membro {
+	ArrayList<Pessoa> pessoas = new ArrayList<Pessoa>();
+	ArrayList<Equipe> subequipes = new ArrayList<Equipe>();
 	
 	public Equipe(String nome) {
 		this.nome = nome;
-	}
-	public String getNome() {
-		return this.nome;
 	}
 	public void addPessoa(Pessoa pessoa) {
 		pessoas.add(pessoa);
@@ -30,5 +25,11 @@ public class Equipe {
 			total += subequipe.getCustoMensal();
 		}
 		return total;
-	}	
+	}
+	
+	@Override
+	public double getSalario() {
+		return getCustoMensal();
+	}
+	
 }
